@@ -2,20 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+.bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(95 111 255 / var(--tw-bg-opacity));
+  outline-color: #5f6fff !important;
+}
+
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --radius: 0.5rem;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.forAppointmentDoctors {
+  .inline-flex.h-9.items-center.justify-center.rounded-lg.bg-neutral-100.p-1.text-neutral-500.dark\:bg-neutral-800.dark\:text-neutral-400 {
+    height: fit-content;
+  }
+
+  .data-\[state\=active\]\:text-neutral-950[data-state="active"] {
+    color: rgb(255 255 255) !important;
+  }
+
+  .data-\[state\=active\]\:bg-white[data-state="active"] {
+    --tw-bg-opacity: 1;
+    background-color: #5f6fff !important;
+    border: 1px solid transparent !important;
+    padding: 1.5rem 0px !important;
+    width: 70px;
+  }
+
+  .bg-neutral-100 {
+    --tw-bg-opacity: 1;
+    background-color: transparent !important;
+  }
+
+  .inline-flex {
+    display: inline-flex;
+    gap: 15px;
+  }
+
+  button.ring-offset-white {
+    --tw-ring-offset-color: #fff;
+    border: 1px solid gray;
+    padding: 1.5rem 0px !important;
+    width: 70px;
+  }
+
+  .rounded-md {
+    border-radius: 9999px !important;
+  }
+
+  div#radix-\:Rlfnnl7\:-content-account {
+    border: none !important;
+    height: auto !important;
+  }
+
+  .data-\[state\=active\]\:text-black[data-state="active"] {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255);
+  }
+  .data-\[state\=active\]\:bg-gray-200[data-state="active"] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(95 111 255);
+  }
+}
+
+
+[data-sonner-toast][data-styled=true] [data-button] {
+background-color: #5f6fff !important;
 }

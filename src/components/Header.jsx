@@ -221,6 +221,7 @@ const Header = () => {
                   { href: "/doctors", label: "ALL DOCTORS" },
                   { href: "/about", label: "ABOUT" },
                   { href: "/contact", label: "CONTACT" },
+                  { href: "/my-appointments", label: "APPOINTMENTS"},
                 ].map(({ href, label }) => (
                   <li
                     key={href}
@@ -236,7 +237,7 @@ const Header = () => {
                 ))}
                 <li
                   onClick={handleAdmin}
-                  className="text-xs cursor-pointer text-indigo-500 border border-indigo-500 rounded-full px-3 py-1"
+                  className="text-xs cursor-pointer w-fit text-indigo-500 border border-indigo-500 rounded-full px-3 py-1"
                 >
                   <span>Admin Panel</span>
                 </li>
@@ -259,20 +260,25 @@ const Header = () => {
                       <DropdownMenuContent>
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>Edit Profile</DropdownMenuItem>
-                        <DropdownMenuItem>
-                          View Developer Github Profile
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <Link
-                            target="_blank"
-                            href={
-                              "https://www.linkedin.com/in/aadarsh-singh-60a1a5229/"
-                            }
-                          >
-                            View Developer Linkedin Profile
-                          </Link>
-                        </DropdownMenuItem>
+                         <DropdownMenuItem>
+                  <Link href={"/edit-profile"}>Edit Profile</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href={"https://github.com/aadarshs12"}>
+                    {" "}
+                    View Developer Github Profile
+                  </Link>{" "}
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link
+                    target="_blank"
+                    href={
+                      "https://www.linkedin.com/in/aadarsh-singh-60a1a5229/"
+                    }
+                  >
+                    View Developer Linkedin Profile
+                  </Link>
+                </DropdownMenuItem>
 
                         <DropdownMenuItem onClick={handleLogout}>
                           Log Out

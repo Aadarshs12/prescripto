@@ -13,7 +13,7 @@ const Footer = () => {
     triggerOnce: true,
   });
   return (
-    <section ref={ref} className="pt-10 pb-6">
+    <section ref={ref} className="pt-10 overflow-hidden pb-6">
       <div className="flex flex-col lg:flex-row mb-6">
         <motion.div
           initial={{ x: -100, opacity: 0 }}
@@ -39,7 +39,7 @@ const Footer = () => {
           initial={{ x: 100, opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
           transition={{ duration: 1.5 }}
-          className="w-full mt-6 lg:mt-0 flex justify-between lg:justify-around md:1/2"
+          className="w-full mt-6 lg:mt-0 flex lg:flex-row flex-col gap-10 justify-between lg:justify-around md:1/2"
         >
           <div>
             <h4 className="text-xl font-semibold">COMPANY</h4>

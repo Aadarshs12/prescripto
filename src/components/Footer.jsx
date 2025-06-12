@@ -62,23 +62,25 @@ const Footer = () => {
             <h4 className="text-xl font-semibold">GET IN TOUCH</h4>
             <ul className="flex flex-col gap-2 mt-6">
               <li className="text-sm flex gap-1 items-center hover:underline hover:text-[#5f6fff] hover:cursor-pointer text-gray-600">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-instagram"
-                >
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                </svg>
-                <span className="gradient-text">@_aadarsh.singh_12_</span>
+                <Link className="flex gap-3 items-center" target="_blank" href={"https://www.instagram.com/_aadarsh.singh_12_?igsh=ZHQzZDl6aGh1cjc5"}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-instagram"
+                  >
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                  </svg>
+                  <span className="gradient-text">@_aadarsh.singh_12_</span>
+                </Link>
               </li>
 
               <li className="text-sm flex gap-1 items-center hover:underline hover:text-[#5f6fff] hover:cursor-pointer text-gray-600">

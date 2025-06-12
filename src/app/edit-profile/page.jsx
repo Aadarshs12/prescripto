@@ -306,7 +306,7 @@ const Page = () => {
   };
 
   return (
-    <div className="flex flex-col w-1/2 gap-6 p-4">
+    <div className="flex flex-col lg:w-1/2 w-full gap-6 p-4">
       <h1 className="text-3xl font-semibold">{user?.displayName || "User"}</h1>
       <hr className="border-gray-400" />
 

@@ -62,7 +62,7 @@ const Footer = () => {
             <h4 className="text-xl font-semibold">GET IN TOUCH</h4>
             <ul className="flex flex-col gap-2 mt-6">
               <li className="text-sm flex gap-1 items-center hover:underline hover:text-[#5f6fff] hover:cursor-pointer text-gray-600">
-                <Link className="flex gap-3 items-center" target="_blank" href={"https://www.instagram.com/_aadarsh.singh_12_?igsh=ZHQzZDl6aGh1cjc5"}>
+                <Link className="flex gap-1 items-center" target="_blank" href={"https://www.instagram.com/_aadarsh.singh_12_?igsh=ZHQzZDl6aGh1cjc5"}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

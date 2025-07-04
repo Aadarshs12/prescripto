@@ -8,7 +8,8 @@ export default function ClientProvider({ children }) {
     return (
         <Provider store={store}>
             {children}
-            <Toaster />
+            <Toaster position="top-right"
+ />
         </Provider>
     );
 }

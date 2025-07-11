@@ -1,10 +1,18 @@
 "use client";
+
 import React from "react";
 import { doctors } from "../../public/images/assets";
 import Image from "next/image";
 import Arrow from "../../public/images/arrow_icon.svg";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const TopDoctors = () => {
   return (
@@ -28,12 +36,14 @@ const TopDoctors = () => {
           Simply browse through our extensive list of trusted{" "}
           <span className="lg:block">doctors.</span>
         </motion.p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 ">
+
+        {/* Grid layout for large screens */}
+        <div className="lg:grid hidden grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
           {doctors.slice(0, 8).map((doc, index) => (
             <Link
               href={`/appointment/${doc?._id.toLowerCase()}`}
               key={index}
-              className="flex flex-col gap-0  border rounded-lg border-teal-700 hover:translate-y-[-10px] transition-all duration-500 hover:cursor-pointer"
+              className="flex flex-col gap-0 border rounded-lg border-teal-700 transition-all duration-500 hover:cursor-pointer"
             >
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -49,13 +59,68 @@ const TopDoctors = () => {
                   <span className="bg-green-500 rounded-full h-2 w-2"></span>{" "}
                   Available
                 </p>
-                <h3 className=" text-lg">{doc?.name}</h3>
+                <h3 className="text-lg">{doc?.name}</h3>
                 <p className="text-sm text-gray-600">{doc?.speciality}</p>
               </div>
             </Link>
           ))}
         </div>
+
+        <div className="lg:hidden">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            navigation
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            className="mySwiper"
+          >
+            {doctors.slice(0, 8).map((doc, index) => (
+              <SwiperSlide key={index}>
+                <Link
+                  href={`/appointment/${doc?._id.toLowerCase()}`}
+                  className="flex flex-col gap-0 border rounded-lg border-teal-700 hover:translate-y-[-10px] transition-all duration-500 hover:cursor-pointer"
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ delay: index * 0.3, duration: 0.5 }}
+                    className="bg-sky-100 rounded-lg rounded-b-none"
+                  >
+                    <Image
+                      className="w-full"
+                      src={doc?.image}
+                      alt="doctor image"
+                      priority={index < 3}
+                    />
+                  </motion.div>
+                  <div className="py-2 px-4 flex flex-col items-start">
+                    <p className="text-green-500 flex items-center gap-1">
+                      <span className="bg-green-500 rounded-full h-2 w-2"></span>{" "}
+                      Available
+                    </p>
+                    <h3 className="text-lg">{doc?.name}</h3>
+                    <p className="text-sm text-gray-600">{doc?.speciality}</p>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
+
       <div className="mt-10 flex justify-center">
         <Link href={"/doctors"}>
           <motion.button

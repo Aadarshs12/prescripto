@@ -75,3 +75,19 @@ body {
 [data-sonner-toast][data-styled=true] [data-button] {
 background-color: #5f6fff !important;
 }
+
+.swiper-pagination {
+    position: unset !important;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    color: #5f6fff !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #5f6fff !important;
+}
+
+:root {
+    --swiper-theme-color: #5f6fff;
+}

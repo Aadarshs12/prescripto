@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { addAppointment, removeAppointment } from "@/store/appointmentsSlice";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 const Index = ({ id }) => {
   const user = useSelector((state) => state?.user?.user);
@@ -116,7 +117,7 @@ const Index = ({ id }) => {
       toast("Please select a time slot!");
       return;
     }
-    if(user==null){
+    if (user == null) {
       toast("Please login to book appointment!");
       return;
     }
@@ -305,7 +306,7 @@ const Index = ({ id }) => {
         })}
       </Tabs>
       <h4 className="text-xl font-bold">Related Doctors</h4>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6">
+      <div className="lg:grid hidden grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6">
         {doctors
           .filter((doc) => {
             const selectedDoctor = doctors.find(
@@ -336,6 +337,63 @@ const Index = ({ id }) => {
               </div>
             </Link>
           ))}
+      </div>
+      <div className="lg:hidden">
+        <Swiper
+          modules={[Autoplay, Navigation, Pagination]}
+          spaceBetween={20}
+          slidesPerView={1}
+          navigation
+          pagination={{
+            clickable: true,
+          }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          breakpoints={{
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="mySwiper"
+        >
+          {doctors
+            .filter((doc) => {
+              const selectedDoctor = doctors.find(
+                (d) => d._id.toLowerCase() === id.toLowerCase()
+              );
+              return (
+                selectedDoctor &&
+                doc.speciality === selectedDoctor.speciality &&
+                doc._id.toLowerCase() !== id.toLowerCase()
+              );
+            })
+            .map((doc, index) => (
+              <SwiperSlide key={index}>
+                <Link
+                  href={`/appointment/${doc._id.toLowerCase()}`}
+                  className="flex flex-col gap-0 border rounded-lg border-teal-700 hover:translate-y-[-10px] transition-all duration-500 hover:cursor-pointer"
+                >
+                  <div className="bg-sky-100 rounded-lg rounded-b-none">
+                    <Image
+                      className="w-full"
+                      src={doc.image}
+                      alt="doctor image"
+                    />
+                  </div>
+                  <div className="py-2 px-4 flex flex-col items-start">
+                    <p className="text-green-500 flex items-center gap-1">
+                      <span className="bg-green-500 rounded-full h-2 w-2"></span>{" "}
+                      Available
+                    </p>
+                    <h3 className="text-lg">{doc.name}</h3>
+                    <p className="text-sm text-gray-600">{doc.speciality}</p>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            ))}
+        </Swiper>
       </div>
     </section>
   );

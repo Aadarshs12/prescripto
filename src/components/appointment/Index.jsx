@@ -380,6 +380,7 @@ const Index = ({ id }) => {
                       className="w-full"
                       src={doc.image}
                       alt="doctor image"
+                      priority={index<3}
                     />
                   </div>
                   <div className="py-2 px-4 flex flex-col items-start">

@@ -338,7 +338,7 @@ const Index = ({ id }) => {
             </Link>
           ))}
       </div>
-      <div className="lg:hidden">
+      <div className="lg:hidden mt-3">
         <Swiper
           modules={[Autoplay, Navigation, Pagination]}
           spaceBetween={20}

@@ -178,7 +178,7 @@ const Header = () => {
                   <Link href={"/edit-profile"}>Edit Profile</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link href={"https://github.com/aadarshs12"}>
+                  <Link target="_blank" href={"https://github.com/aadarshs12"}>
                     {" "}
                     View Developer Github Profile
                   </Link>{" "}
@@ -264,7 +264,7 @@ const Header = () => {
                   <Link href={"/edit-profile"}>Edit Profile</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link href={"https://github.com/aadarshs12"}>
+                  <Link target="_blank" href={"https://github.com/aadarshs12"}>
                     {" "}
                     View Developer Github Profile
                   </Link>{" "}

@@ -33,7 +33,7 @@ const page = () => {
             <span>00000 Willms Station</span>
             <span>Suite 000, Washington, USA</span>
           </div>
-          <div>
+          <div className="flex gap-3 lg:flex-row flex-col">
             <span>Tel: (000) 000-0000</span>
             <a href="mailto:aadarshs500@gmail.com">
               Email: aadarshs500@gmail.com

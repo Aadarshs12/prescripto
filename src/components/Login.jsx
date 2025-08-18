@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { auth } from "@/lib/firebase";
 import { motion } from "framer-motion";
+import { Eye, EyeOff } from "lucide-react";
 import {
   createUserWithEmailAndPassword,
   updateProfile,
@@ -14,6 +15,7 @@ import { useRouter } from "next/navigation";
 const Login = () => {
   const router = useRouter();
   const [existingUser, setExistingUser] = useState(false);
+  const [isSeePasswordOpen, setIsSeePasswordOpen] = useState(false);
   const {
     register,
     handleSubmit,
@@ -105,8 +107,12 @@ const Login = () => {
           onClick: () => toast.dismiss(),
         },
       });
-      throw error; // Let the caller handle the error
+      throw error;
     }
+  };
+
+  const handleSeePassword = () => {
+    setIsSeePasswordOpen(!isSeePasswordOpen);
   };
 
   const handleExistingUser = () => {
@@ -154,14 +160,22 @@ const Login = () => {
                   <p className="text-red-500">{errors.email.message}</p>
                 )}
               </div>
-              <div>
+              <div className="relative">
                 <label>Password:</label>
                 <input
+                  type={isSeePasswordOpen ? "text" : "password"}
                   {...register("password", {
                     required: "Password is required",
                   })}
                   className="border border-gray-600 p-2 w-full rounded-md"
+                  autoComplete="new-password"
                 />
+                <span
+                  className="absolute cursor-pointer hover:bg-gray-400 hover:opacity-85 hover:text-zinc-200 p-1 hover:rounded-full top-7 right-2"
+                  onClick={handleSeePassword}
+                >
+                  {isSeePasswordOpen ? <EyeOff /> : <Eye />}
+                </span>
                 {errors.password && (
                   <p className="text-red-500">{errors.password.message}</p>
                 )}
@@ -214,14 +228,22 @@ const Login = () => {
                   <p className="text-red-500">{errors.email.message}</p>
                 )}
               </div>
-              <div>
+              <div className="relative">
                 <label>Password:</label>
                 <input
+                  type={isSeePasswordOpen ? "text" : "password"}
                   {...register("password", {
                     required: "Password is required",
                   })}
                   className="border border-gray-600 p-2 w-full rounded-md"
+                  autoComplete="new-password"
                 />
+                <span
+                  className="absolute cursor-pointer hover:bg-gray-400 hover:opacity-85 hover:text-zinc-200 p-1 hover:rounded-full top-7 right-2"
+                  onClick={handleSeePassword}
+                >
+                  {isSeePasswordOpen ? <EyeOff /> : <Eye />}
+                </span>
                 {errors.password && (
                   <p className="text-red-500">{errors.password.message}</p>
                 )}

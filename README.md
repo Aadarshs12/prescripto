@@ -1,39 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🩺 Prescripto
 
-## Getting Started
+**Online Prescription Tools for Doctors**
 
-First, run the development server:
+Prescripto empowers healthcare professionals with fast, secure, and compliant tools for sending and managing medical prescriptions online. Designed with modern technologies, it enables doctors and clinics to offer a seamless e-prescribing experience to their patients.
+
+---
+
+## 🚀 Features
+
+- 📄 **E-Prescription**: Send and manage medical prescriptions digitally.
+- 🗓️ **Appointment Booking**: Patients can book appointments effortlessly.
+- 👨‍⚕️ **Doctor Profiles**: View detailed doctor qualifications, experience, and contact information.
+- 🌙 **Dark Mode**: Integrated with `next-themes` for a better UX.
+- 🔐 **Secure Integration**: Powered by Firebase for real-time data and authentication.
+- 🔄 **Dynamic UI**: Built using `framer-motion`, `radix-ui`, and `tailwindcss` for responsive and animated components.
+
+---
+
+## 🧩 Tech Stack
+
+| Category        | Libraries / Tools |
+|----------------|-------------------|
+| **Frontend**    | Next.js, React, Tailwind CSS |
+| **Animations & UI** | Radix UI, Framer Motion, Lucide Icons |
+| **State Management** | Redux Toolkit, React-Redux |
+| **Forms**       | React Hook Form |
+| **Auth & Backend** | Firebase |
+| **Dev Tools**   | ESLint, Turbopack |
+| **UI Enhancers** | Swiper (carousels), `clsx`, `class-variance-authority` |
+
+---
+
+## 📁 Project Structure
+
+/prescripto
+├── pages/ # Next.js pages
+├── components/ # Reusable UI components
+├── styles/ # Tailwind and custom styles
+├── redux/ # Redux Toolkit setup
+├── public/ # Static assets
+├── firebase.js # Firebase config
+└── tailwind.config.js
+
+
+---
+
+## 🛠️ Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-
-https://prescripto-9faac.web.app
+npm run dev       # Start development server
+npm run build     # Build for production
+npm run start     # Start production server
+npm run lint      # Run ESLint

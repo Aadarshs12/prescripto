@@ -11,7 +11,6 @@ Prescripto empowers healthcare professionals with fast, secure, and compliant to
 - 📄 **E-Prescription**: Send and manage medical prescriptions digitally.
 - 🗓️ **Appointment Booking**: Patients can book appointments effortlessly.
 - 👨‍⚕️ **Doctor Profiles**: View detailed doctor qualifications, experience, and contact information.
-- 🌙 **Dark Mode**: Integrated with `next-themes` for a better UX.
 - 🔐 **Secure Integration**: Powered by Firebase for real-time data and authentication.
 - 🔄 **Dynamic UI**: Built using `framer-motion`, `radix-ui`, and `tailwindcss` for responsive and animated components.
 

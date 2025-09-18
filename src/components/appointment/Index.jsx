@@ -225,12 +225,20 @@ const Index = ({ id }) => {
           <div className="w-full max-w-full">
             <Swiper
               modules={[A11y, FreeMode]}
-              freeMode
+              freeMode={{
+                momentum: true,
+                momentumRatio: 1,
+                momentumVelocityRatio: 1,
+              }}
               grabCursor={true}
-              spaceBetween={10}
-              slidesPerView={7}
-              noSwiping={true}
-              allowTouchMove={false}
+              spaceBetween={8}
+              slidesPerView={3}
+              breakpoints={{
+                360: { slidesPerView: 4.4 },
+                480: { slidesPerView: 5.5 },
+                768: { slidesPerView: 6.5 },
+                1024: { slidesPerView: 7 },
+              }}
               className="mt-4"
             >
               {days.map((day, index) => {
@@ -266,12 +274,12 @@ const Index = ({ id }) => {
                 spaceBetween={10}
                 className="cursor-grab md:mt-4"
                 breakpoints={{
-                  360: { slidesPerView: 3 },
-                  480: { slidesPerView: 4 },
+                  360: { slidesPerView: 3.5 },
+                  480: { slidesPerView: 4.5 },
                   768: { slidesPerView: 5.5 },
-                  1024: { slidesPerView: 7 },
-                  1280: { slidesPerView: 8 },
-                  1536: { slidesPerView: 9 },
+                  1024: { slidesPerView: 6.5 },
+                  1280: { slidesPerView: 7.5 },
+                  1536: { slidesPerView: 8.5 },
                 }}
               >
                 {timeSlots.length > 0 ? (

@@ -239,6 +239,10 @@ const Index = ({ id }) => {
                 768: { slidesPerView: 6.5 },
                 1024: { slidesPerView: 7 },
               }}
+              preventClicks={false}
+              preventClicksPropagation={false}
+              threshold={10}
+              touchStartPreventDefault={false}
               className="mt-4"
             >
               {days.map((day, index) => {

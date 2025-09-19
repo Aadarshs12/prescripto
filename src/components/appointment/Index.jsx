@@ -212,111 +212,113 @@ const Index = ({ id }) => {
                   </h5>
                 </div>
               </div>
+              <Tabs
+                defaultValue={currentDayValue}
+                onValueChange={setActiveTab}
+                className="mt-8 font-medium text-[#565656]"
+              >
+                <TabsList className="w-full overflow-hidden">
+                  <div className="w-full max-w-full">
+                    <Swiper
+                      modules={[A11y, FreeMode]}
+                      freeMode={{
+                        momentum: true,
+                        momentumRatio: 1,
+                        momentumVelocityRatio: 1,
+                      }}
+                      grabCursor={true}
+                      spaceBetween={8}
+                      slidesPerView={3}
+                      breakpoints={{
+                        360: { slidesPerView: 4.4 },
+                        480: { slidesPerView: 5.5 },
+                        768: { slidesPerView: 6.5 },
+                        1024: { slidesPerView: 7 },
+                      }}
+                      preventClicks={false}
+                      preventClicksPropagation={false}
+                      threshold={10}
+                      touchStartPreventDefault={false}
+                      className="mt-4"
+                    >
+                      {days.map((day, index) => {
+                        const dayValue = day.dayOfWeek
+                          .slice(0, 3)
+                          .toLowerCase();
+                        return (
+                          <SwiperSlide
+                            key={index}
+                            className="!w-auto flex items-center justify-center"
+                          >
+                            <TabsTrigger
+                              className="uppercase flex flex-col text-xl p-2 w-full h-full items-center justify-center cursor-pointer hover:bg-gray-100 data-[state=active]:bg-gray-200 data-[state=active]:text-black"
+                              value={dayValue}
+                            >
+                              <span>{day.dayOfWeek}</span>
+                              <span>{day.dayOfMonth}</span>
+                            </TabsTrigger>
+                          </SwiperSlide>
+                        );
+                      })}
+                    </Swiper>
+                  </div>
+                </TabsList>
+                {days.map((day, index) => {
+                  const dayValue = day.dayOfWeek.slice(0, 3).toLowerCase();
+                  const timeSlots = generateTimeSlots(day.date);
+
+                  return (
+                    <TabsContent className="mt-4" key={index} value={dayValue}>
+                      <Swiper
+                        modules={[A11y, FreeMode]}
+                        freeMode
+                        grabCursor={true}
+                        spaceBetween={10}
+                        className="cursor-grab md:mt-4"
+                        breakpoints={{
+                          360: { slidesPerView: 3.5 },
+                          480: { slidesPerView: 4.5 },
+                          768: { slidesPerView: 5.5 },
+                          1024: { slidesPerView: 6.5 },
+                          1280: { slidesPerView: 7.5 },
+                          1536: { slidesPerView: 8.5 },
+                        }}
+                      >
+                        {timeSlots.length > 0 ? (
+                          timeSlots.map((slot, index) => (
+                            <SwiperSlide
+                              key={index}
+                              className={`border p-2 text-center rounded-full text-nowrap cursor-pointer ${
+                                selectedSlot === slot
+                                  ? "bg-[#5f6fff] text-white"
+                                  : "bg-gray-100"
+                              }`}
+                              onClick={() => handleSlotClick(slot)}
+                            >
+                              {slot}
+                            </SwiperSlide>
+                          ))
+                        ) : (
+                          <SwiperSlide className="text-nowrap">
+                            Sorry, No Slots Available for this day!
+                          </SwiperSlide>
+                        )}
+                      </Swiper>
+                      <button
+                        variant="outline"
+                        onClick={bookAppointment}
+                        className="text-white my-5 py-3 px-4 bg-primary hover:bg-indigo-600 rounded-full text-xl font-semibold"
+                      >
+                        Book Appointment
+                      </button>
+                    </TabsContent>
+                  );
+                })}
+              </Tabs>
             </motion.div>
           </div>
         ))}
 
-      <Tabs
-        defaultValue={currentDayValue}
-        onValueChange={setActiveTab}
-        className="lg:ml-72 sm:pl-4 mt-8 font-medium text-[#565656]"
-      >
-        <TabsList className="w-full overflow-hidden">
-          <div className="w-full max-w-full">
-            <Swiper
-              modules={[A11y, FreeMode]}
-              freeMode={{
-                momentum: true,
-                momentumRatio: 1,
-                momentumVelocityRatio: 1,
-              }}
-              grabCursor={true}
-              spaceBetween={8}
-              slidesPerView={3}
-              breakpoints={{
-                360: { slidesPerView: 4.4 },
-                480: { slidesPerView: 5.5 },
-                768: { slidesPerView: 6.5 },
-                1024: { slidesPerView: 7 },
-              }}
-              preventClicks={false}
-              preventClicksPropagation={false}
-              threshold={10}
-              touchStartPreventDefault={false}
-              className="mt-4"
-            >
-              {days.map((day, index) => {
-                const dayValue = day.dayOfWeek.slice(0, 3).toLowerCase();
-                return (
-                  <SwiperSlide
-                    key={index}
-                    className="!w-auto flex items-center justify-center"
-                  >
-                    <TabsTrigger
-                      className="uppercase flex flex-col text-xl p-2 w-full h-full items-center justify-center cursor-pointer hover:bg-gray-100 data-[state=active]:bg-gray-200 data-[state=active]:text-black"
-                      value={dayValue}
-                    >
-                      <span>{day.dayOfWeek}</span>
-                      <span>{day.dayOfMonth}</span>
-                    </TabsTrigger>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </div>
-        </TabsList>
-        {days.map((day, index) => {
-          const dayValue = day.dayOfWeek.slice(0, 3).toLowerCase();
-          const timeSlots = generateTimeSlots(day.date);
-
-          return (
-            <TabsContent className="mt-4" key={index} value={dayValue}>
-              <Swiper
-                modules={[A11y, FreeMode]}
-                freeMode
-                grabCursor={true}
-                spaceBetween={10}
-                className="cursor-grab md:mt-4"
-                breakpoints={{
-                  360: { slidesPerView: 3.5 },
-                  480: { slidesPerView: 4.5 },
-                  768: { slidesPerView: 5.5 },
-                  1024: { slidesPerView: 6.5 },
-                  1280: { slidesPerView: 7.5 },
-                  1536: { slidesPerView: 8.5 },
-                }}
-              >
-                {timeSlots.length > 0 ? (
-                  timeSlots.map((slot, index) => (
-                    <SwiperSlide
-                      key={index}
-                      className={`border p-2 text-center rounded-full text-nowrap cursor-pointer ${
-                        selectedSlot === slot
-                          ? "bg-[#5f6fff] text-white"
-                          : "bg-gray-100"
-                      }`}
-                      onClick={() => handleSlotClick(slot)}
-                    >
-                      {slot}
-                    </SwiperSlide>
-                  ))
-                ) : (
-                  <SwiperSlide className="text-nowrap">
-                    Sorry, No Slots Available for this day!
-                  </SwiperSlide>
-                )}
-              </Swiper>
-              <button
-                variant="outline"
-                onClick={bookAppointment}
-                className="text-white my-5 py-3 px-4 bg-primary hover:bg-indigo-600 rounded-full text-xl font-semibold"
-              >
-                Book Appointment
-              </button>
-            </TabsContent>
-          );
-        })}
-      </Tabs>
       <h4 className="text-xl font-bold">Related Doctors</h4>
       <div className="lg:grid hidden grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6">
         {doctors
@@ -392,7 +394,7 @@ const Index = ({ id }) => {
                       className="w-full"
                       src={doc.image}
                       alt="doctor image"
-                      priority={index<3}
+                      priority={index < 3}
                     />
                   </div>
                   <div className="py-2 px-4 flex flex-col items-start">
